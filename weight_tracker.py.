@@ -1,0 +1,39 @@
+import datetime
+
+def record_weight(date, weight, file):
+    """Записывает дату и вес в файл"""
+    file.write("{},{}\n".format(date, weight))
+
+def read_weight_records(file):
+    """Считывает записи о весе из файла"""
+    weight_records = []
+    for line in file:
+        date, weight = line.strip().split(",")
+        weight_records.append((date, float(weight)))
+    return weight_records
+
+def display_weight_records(weight_records):
+    """Отображает записи о весе на экране"""
+    for date, weight in weight_records:
+        print("{}: {:.2f} кг".format(date, weight))
+
+def main():
+    """Главная функция"""
+    print("Weight Tracker")
+    print("1. Записать вес")
+    print("2. Просмотреть записи о весе")
+    choice = int(input("Выберите опцию (1 или 2): "))
+    if choice == 1:
+        weight = float(input("Введите свой вес (в килограммах): "))
+        with open("weight_records.txt", "a") as f:
+            record_weight(datetime.date.today(), weight, f)
+        print("Ваш вес был записан.")
+    elif choice == 2:
+        with open("weight_records.txt", "r") as f:
+            weight_records = read_weight_records(f)
+            display_weight_records(weight_records)
+    else:
+        print("Неверный выбор")
+
+if __name__ == '__main__':
+    main()
