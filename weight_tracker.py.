@@ -17,6 +17,7 @@ def display_weight_records(weight_records):
     for date, weight in weight_records:
         print("{}: {:.2f} кг".format(date, weight))
 
+
 def main():
     """Главная функция"""
     print("Weight Tracker")
@@ -27,7 +28,7 @@ def main():
         weight = float(input("Введите свой вес (в килограммах): "))
         with open("weight_records.txt", "a") as f:
             record_weight(datetime.date.today(), weight, f)
-        print("Ваш вес был записан.")
+        print("Ваш вес был записан.").
     elif choice == 2:
         with open("weight_records.txt", "r") as f:
             weight_records = read_weight_records(f)
