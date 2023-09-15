@@ -18,6 +18,7 @@ def display_weight_records(weight_records):
         print("{}: {:.2f} кг".format(date, weight))
 
 
+
 def main():
     """Главная функция"""
     print("Weight Tracker")
